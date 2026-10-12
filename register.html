@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><title>Create account · Pillora</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body><header class="top"><button class="ib" id="burger" aria-label="Menu">☰</button><a class="logo" href="index.html"><span class="cap"></span>Pillora</a><nav class="m"><a href="login.html">Log in</a><a href="register.html">Create account</a></nav><button class="ib" id="theme" aria-label="Toggle light or dark" style="margin-left:auto"></button></header><div class="auth"><section class="art"><img class="artimg" src="assets/hero.svg" alt=""><h1>Never miss a dose again.</h1><p>Reminders that repeat until you confirm, alerts that reach your family, and reports your doctor can use.</p><ul><li>Works offline in your browser</li><li>Patients control who sees what</li><li>Video calls with your doctor</li><li>English, മലയാളം, हिन्दी</li></ul></section>
+<div class="formside"><form id="f" novalidate><h2>Create your account</h2><p class="mute">Free to use. Your data stays in this browser.</p>
+<label for="n">Full name</label><input id="n" autocomplete="name" required>
+<label for="e">Email</label><input id="e" type="email" autocomplete="email" required>
+<label for="ph">Mobile number (for calls and alerts)</label><input id="ph" type="tel" autocomplete="tel" placeholder="+91 98xxxxxx"><label for="r">I am a</label><select id="r"><option value="patient">Patient (I take medicines)</option><option value="caregiver">Caregiver (family member)</option><option value="doctor">Doctor</option><option value="pharmacist">Pharmacist</option></select>
+<label for="p">Password</label><div class="pw"><input id="p" type="password" autocomplete="new-password" required><button type="button" aria-label="Show or hide password">Show</button></div>
+<div class="strength"><b id="sb"></b></div><small class="mute" id="st">Use 8+ characters with letters and numbers.</small>
+<label for="c">Confirm password</label><div class="pw"><input id="c" type="password" autocomplete="new-password" required><button type="button" aria-label="Show or hide confirm password">Show</button></div>
+<div class="err" id="er" role="alert"></div><button class="btn full">Create account</button><p class="mute">Already registered? <a href="login.html">Log in</a></p></form></div></div>
+<script src="js/common.js"></script><script>
+$('#p').oninput=()=>{const v=$('#p').value;let s=0;if(v.length>=8)s++;if(/[a-z]/i.test(v)&&/\d/.test(v))s++;if(/[^a-z0-9]/i.test(v)||v.length>=12)s++;
+ $('#sb').style.width=s*33.3+'%';$('#sb').style.background=['var(--coral)','var(--coral)','var(--sun)','var(--mint)'][s];$('#st').textContent=['Too weak','Weak','Good','Strong'][s]};
+$('#f').onsubmit=async ev=>{ev.preventDefault();const em=$('#e').value.trim().toLowerCase(),p=$('#p').value,U=users(),er=m=>$('#er').textContent=m;
+ if(!$('#n').value.trim())return er('Enter your name.');if(!/^\S+@\S+\.\S+$/.test(em))return er('Enter a valid email.');
+ if(p.length<8||!/\d/.test(p)||!/[a-z]/i.test(p))return er('Password needs 8+ characters with letters and numbers.');
+ if(p!==$('#c').value)return er('Passwords do not match.');if(U[em])return er('This email is already registered. Log in instead.');
+ const salt=Math.random().toString(36).slice(2);U[em]={phone:$('#ph').value.trim(),name:$('#n').value.trim(),role:$('#r').value,salt,h:await hash(p,salt)};S('dc_users',U);localStorage.dc_session=em;location.href='app.html'};
+</script></body></html>

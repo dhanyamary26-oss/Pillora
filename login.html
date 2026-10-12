@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="en"><head><title>Log in · Pillora</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body><header class="top"><button class="ib" id="burger" aria-label="Menu">☰</button><a class="logo" href="index.html"><span class="cap"></span>Pillora</a><nav class="m"><a href="login.html">Log in</a><a href="register.html">Create account</a></nav><button class="ib" id="theme" aria-label="Toggle light or dark" style="margin-left:auto"></button></header><div class="auth"><section class="art"><img class="artimg" src="assets/hero.svg" alt=""><h1>Never miss a dose again.</h1><p>Reminders that repeat until you confirm, alerts that reach your family, and reports your doctor can use.</p><ul><li>Works offline in your browser</li><li>Patients control who sees what</li><li>Video calls with your doctor</li><li>English, മലയാളം, हिन्दी</li></ul></section>
+<div class="formside"><form id="f" novalidate><h2>Welcome back</h2><p class="mute">Log in to see today's medicines.</p>
+<label for="e">Email</label><input id="e" type="email" autocomplete="email" required>
+<label for="p">Password</label><div class="pw"><input id="p" type="password" autocomplete="current-password" required><button type="button" aria-label="Show or hide password">Show</button></div>
+<div class="err" id="er" role="alert"></div><button class="btn full">Log in</button><p class="mute">New here? <a href="register.html">Create an account</a></p></form></div></div>
+<script src="js/common.js"></script><script>
+if(sess()&&users()[sess()])location.replace('app.html');
+$('#f').onsubmit=async ev=>{ev.preventDefault();const em=$('#e').value.trim().toLowerCase(),u=users()[em];
+ if(!u||u.h!==await hash($('#p').value,u.salt)){$('#er').textContent='Email or password is incorrect.';return}
+ localStorage.dc_session=em;location.href='app.html'};
+</script></body></html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pillora – Medication Adherence Platform</title><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head>
+<body class="land"><header class="top"><button class="ib" id="burger" aria-label="Menu">☰</button><a class="logo" href="index.html"><span class="cap"></span>Pillora</a>
+<nav class="m"><a href="#features">Features</a><a href="#roles">Who it's for</a><a href="#delivery">Home delivery</a><a href="login.html">Log in</a><a class="btn sm" href="register.html">Get started</a></nav><button class="ib" id="theme" aria-label="Toggle light or dark" style="margin-left:auto"></button></header>
+<section class="lhero"><span class="cp" style="--r:-20deg;left:6%;top:30%"></span><span class="cp" style="--r:30deg;right:8%;top:68%;animation-delay:-3s"></span><span class="cp" style="--r:10deg;left:46%;top:12%;animation-delay:-5s;width:60px;height:24px"></span>
+<div class="w"><div><h1>Every dose on time.<br>Every family at ease.</h1><p>Pillora reminds you with sound until you respond, alerts your caregiver if you don't, lets you video call your doctor, and sends refills to your pharmacy for home delivery.</p><div class="btns" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px"><a class="btn" href="register.html">Create free account</a><a class="btn alt" href="login.html" id="open">Log in</a></div></div><img src="assets/hero.svg" alt="Phone showing medicine reminders" style="width:100%;animation:float 6s ease-in-out infinite"></div></section>
+<section id="features"><div class="w"><h2 class="rv">Everything for taking medicine safely</h2><p class="mute rv">Built for patients, caregivers and doctors.</p><div class="fg">
+<div class="fc rv"><i>🔔</i><h3>10-second reminder sound</h3><p class="mute">Rings again every 5 minutes until you confirm the dose.</p></div>
+<div class="fc rv"><i>🚨</i><h3>Caregiver alerts</h3><p class="mute">Missed doses and emergency presses reach your family at once.</p></div>
+<div class="fc rv"><i>📹</i><h3>Video call your doctor</h3><p class="mute">Private rooms that ring inside Pillora.</p></div>
+<div class="fc rv"><i>🛵</i><h3>Pharmacy home delivery</h3><p class="mute">Send your refill list when stock runs low.</p></div>
+<div class="fc rv"><i>📈</i><h3>Adherence reports</h3><p class="mute">Daily, weekly and monthly graphs with a clear score.</p></div>
+<div class="fc rv"><i>🛡️</i><h3>Interaction and side-effect checks</h3><p class="mute">Warnings to ask your pharmacist, and reports to your doctor.</p></div>
+<div class="fc rv"><i>🌐</i><h3>Malayalam, Hindi, English</h3><p class="mute">Voice reminders in your language.</p></div>
+<div class="fc rv"><i>🔒</i><h3>You control access</h3><p class="mute">Choose what each caregiver or doctor can see.</p></div></div></div></section>
+<section id="roles" style="background:var(--surf)"><div class="w"><h2 class="rv">One platform, three dashboards</h2><div class="roles">
+<div class="rc rv"><img src="assets/hero.svg" alt="" style="background:linear-gradient(150deg,#0F7C7A,#0A3A45);border-radius:20px"><h3>Patient</h3><p class="mute">Today's doses, stock, reports, calls and refills.</p></div>
+<div class="rc rv" style="background:#EAE3FA;color:#222"><img src="assets/caregiver.svg" alt=""><h3>Caregiver</h3><p>Live alerts and everyone's progress in one view.</p></div>
+<div class="rc rv" style="background:#DDEBFA;color:#222"><img src="assets/doctor.svg" alt=""><h3>Doctor</h3><p>Risk overview, reviews and video consultations.</p></div></div></div></section>
+<section id="delivery"><div class="w"><div class="band rv"><div><h2>Running low? Order from home.</h2><p class="mute">Pillora estimates when each medicine runs out, warns you in advance, and sends the list to your pharmacy with your address and prescription.</p><a class="btn" href="register.html">Try it</a></div><img src="assets/delivery.svg" alt=""></div>
+<div class="steps"><div class="rv"><b>Register</b><br><span class="mute">Pick your role.</span></div><div class="rv"><b>Add medicines</b><br><span class="mute">Times, stock and meals.</span></div><div class="rv"><b>Get reminded</b><br><span class="mute">Sound until you respond.</span></div><div class="rv"><b>Stay connected</b><br><span class="mute">Family, doctor, pharmacy.</span></div></div></div></section>
+<footer style="padding:30px 20px;text-align:center;color:var(--mute)">© Pillora · Supports, never replaces, advice from your doctor or pharmacist.</footer>
+<script src="js/common.js"></script><script>
+if(sess()&&users()[sess()]){$('#open').textContent='Open dashboard';$('#open').href='app.html'}
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('in')),{threshold:.15});$$('.rv').forEach(e=>io.observe(e));
+$$('.top nav a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('nav-open')));
+</script></body></html>
